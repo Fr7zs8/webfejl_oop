@@ -28,9 +28,15 @@ let player1 = new Player("Fruzsi");
 
 player1.play();
 player1.play();
-player1.printTierLevel("Fruzsi", getTierLevel());
+printTierLevel("Fruzsi", getTierLevel());
 
 player1.play();
 player1.play();
 player1.play();
-player1.printTierLevel("Fruzsi", getTierLevel());
+printTierLevel("Fruzsi", getTierLevel());
+
+
+player1.play();
+player1.play();
+player1.play();
+printTierLevel("Fruzsi", getTierLevel());
