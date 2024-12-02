@@ -4,24 +4,27 @@ class Player{
         this.playedMatch = 0
     }
         
+    play(){
+        this.playedMatch++;
+        console.log(this.nickname + " nevű játékos " + this.playedMatch + " számú játékot játszott.")
+    };
+
+    getTierLevel(){
+        if (this.playedMatch <= 3){
+            return "A";
+        }
+        else if (this.playedMatch <= 6){
+            return "B";
+        }
+        else{
+            return "C";
+        }
+    };
 }
 
-Player.prototype.play = function(){
-    this.playedMatch++;
-    console.log(this.nickname + " nevű játékos " + this.playedMatch + " számú játékot játszott.")
-};
 
-Player.prototype.getTierLevel = function(){
-    if (this.playedMatch <= 3){
-        return "A";
-    }
-    else if (this.playedMatch <= 6){
-        return "B";
-    }
-    else{
-        return "C";
-    }
-};
+
+
 
 function printTierLevel(player) {
     console.log(`${player.nickname} a ${player.getTierLevel()} tier-ben van.`);
@@ -45,20 +48,24 @@ player1.play();
 printTierLevel(player1);
 
 
-function Person(name){
-    this.name = name;
-}
-Person.prototype.getname = function(){
-    return this.name;
-}
-
-function Student(school, name){
-    Person.call(this, name);
-    this.school = school;
-    this.name = name;
+class Person{
+    constructor(name){
+        this.name = name;
+    }
+    getname() {
+        return this.name;
+    }
 }
 
-Object.setPrototypeOf(Student.prototype, Person.prototype);
+
+class Student extends Person{
+    constructor(school, name){
+        super(name);
+        this.school = school;
+    }
+    
+}
+
 
 let student1 = new Student("Bolyai", "Fruzsi");
 
