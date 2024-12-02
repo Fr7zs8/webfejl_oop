@@ -20,23 +20,23 @@ Player.prototype.getTierLevel = function(){
     }
 };
 
-function printTierLevel(nickname, tierLevel) {
-    console.log(`${nickname} a ${tierLevel} tier-ben van.`);
+function printTierLevel(player) {
+    console.log(`${player.nickname} a ${player.getTierLevel()} tier-ben van.`);
 }
 
 let player1 = new Player("Fruzsi");
 
 player1.play();
 player1.play();
-printTierLevel("Fruzsi", player1.getTierLevel());
+printTierLevel(player1);
 
 player1.play();
 player1.play();
 player1.play();
-printTierLevel("Fruzsi", player1.getTierLevel());
+printTierLevel(player1);
 
 
 player1.play();
 player1.play();
 player1.play();
-printTierLevel("Fruzsi", player1.getTierLevel());
+printTierLevel(player1);
