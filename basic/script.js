@@ -71,3 +71,44 @@ let student1 = new Student("Bolyai", "Fruzsi");
 
 console.log(student1.getname());
 console.log(student1.school);
+
+
+class Animal{
+    constructor(hang, name){
+        this.hang = hang;
+        this.name = name;
+    }
+    mitcsinal(){
+        console.log("A(z) "+ this.name+ " " + this.hang+" hangot ad ki.")
+    }
+}
+
+class Bird extends Animal{
+    constructor(hang, name){
+        super(hang, name);
+        
+    }
+    mitcsinal(){
+        console.log("A(z) "+ this.name+ " " + this.hang+" hangot ad ki és repül.");
+    }
+}
+
+class Mammal extends Animal{
+    constructor(hang, name){
+        super(hang, name);
+        
+    }
+    mitcsinal(){
+        console.log("A(z) "+ this.name+ " " + this.hang+" hangot ad ki és jár.")
+    
+    }
+}
+
+let animal1 = new Animal("Buuu", "Tehén");
+animal1.mitcsinal();
+
+let animal2 = new Bird("Cip-Cip", "Cinege");
+animal2.mitcsinal();
+
+let animal3 = new Mammal("Huhu", "Mammal");
+animal3.mitcsinal();
