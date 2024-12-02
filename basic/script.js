@@ -74,41 +74,42 @@ console.log(student1.school);
 
 
 class Animal{
-    constructor(hang, name){
-        this.hang = hang;
+    constructor(name){
         this.name = name;
     }
-    mitcsinal(){
-        console.log("A(z) "+ this.name+ " " + this.hang+" hangot ad ki.")
+    hang(){
+        console.log("A(z) "+ this.name+ " hangot ad ki.")
     }
 }
 
 class Bird extends Animal{
-    constructor(hang, name){
-        super(hang, name);
+    constructor(name){
+        super(name);
         
     }
-    mitcsinal(){
-        console.log("A(z) "+ this.name+ " " + this.hang+" hangot ad ki és repül.");
+    repul(){
+        console.log("A(z) "+ this.name+ " repül.");
     }
 }
 
 class Mammal extends Animal{
-    constructor(hang, name){
-        super(hang, name);
+    constructor(name){
+        super(name);
         
     }
-    mitcsinal(){
-        console.log("A(z) "+ this.name+ " " + this.hang+" hangot ad ki és jár.")
+    jar(){
+        console.log("A(z) "+ this.name+ " jár.")
     
     }
 }
 
-let animal1 = new Animal("Buuu", "Tehén");
-animal1.mitcsinal();
+let animal1 = new Animal("Tehén");
+animal1.hang();
 
-let animal2 = new Bird("Cip-Cip", "Cinege");
-animal2.mitcsinal();
+let animal2 = new Bird("Cinege");
+animal2.repul();
+animal2.hang();
 
-let animal3 = new Mammal("Huhu", "Mammal");
-animal3.mitcsinal();
+let animal3 = new Mammal("Mammal");
+animal3.jar();
+animal3.hang();
