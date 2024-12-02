@@ -8,11 +8,11 @@ Player.prototype.play = function(){
     console.log(this.nickname + " nevű játékos " + this.playedMatch + " számú játékot játszott.")
 };
 
-function getTierLevel(){
+Player.prototype.getTierLevel = function(){
     if (this.playedMatch <= 3){
         return "A";
     }
-    else if(this.playedMatch <= 6){
+    else if (this.playedMatch <= 6){
         return "B";
     }
     else{
@@ -28,15 +28,15 @@ let player1 = new Player("Fruzsi");
 
 player1.play();
 player1.play();
-printTierLevel("Fruzsi", getTierLevel());
+printTierLevel("Fruzsi", player1.getTierLevel());
 
 player1.play();
 player1.play();
 player1.play();
-printTierLevel("Fruzsi", getTierLevel());
+printTierLevel("Fruzsi", player1.getTierLevel());
 
 
 player1.play();
 player1.play();
 player1.play();
-printTierLevel("Fruzsi", getTierLevel());
+printTierLevel("Fruzsi", player1.getTierLevel());
