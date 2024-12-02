@@ -5,6 +5,7 @@ class Player{
     }
         
 }
+
 Player.prototype.play = function(){
     this.playedMatch++;
     console.log(this.nickname + " nevű játékos " + this.playedMatch + " számú játékot játszott.")
@@ -42,3 +43,23 @@ player1.play();
 player1.play();
 player1.play();
 printTierLevel(player1);
+
+
+function Person(){
+    this.name = "Géza";
+}
+Person.prototype.getname = function(){
+    return this.name;
+}
+
+function Student(school){
+    Person.call(this);
+    this.school = school;
+}
+
+Object.setPrototypeOf(Student.prototype, Person.prototype);
+
+let student1 = new Student("Bolyai");
+
+console.log(student1.getname());
+console.log(student1.school);
