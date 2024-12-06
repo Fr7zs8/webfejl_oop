@@ -78,12 +78,12 @@ function addCompanion(form, factory){ //TODO // TODO 6
     const firstName =form.querySelector('#cfirstname')
     const lastname =form.querySelector('#clastname')
     const area = form.querySelector('#carea')
-    const id = factory.createId();
+    const id = factory.createId(); // dinamikusan adjuk a az id-t a lenght alapján
     const firstNameValue = firstName.value;
     const lastNameValue = lastname.value;
     const areaValue = area.value;
-    const mano = new Companion(id, lastNameValue, firstNameValue, areaValue);
-    factory.addMano(mano);
+    const mano = new Companion(id, lastNameValue, firstNameValue, areaValue); //letrehozunk egy uj manot
+    factory.addMano(mano); // hozzáadjuk a manot a factoyhoz
     
 }
 
