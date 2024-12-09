@@ -8,7 +8,7 @@ function createRow(companion){
     const tbody = table.querySelector('tbody');
     const tableRow = document.createElement('tr');
     tbody.appendChild(tableRow);
-// TODO 7
+    tableRow.id = companion.id;
     const nametd= createCell(tableRow);
     nametd.innerHTML = companion.getName();
     
@@ -59,16 +59,12 @@ function appendToSelector(){
 function refreshProductList(companion){ //TODO // TODO 10
 
     const companionName = document.getElementById('companion_name');
-    
     companionName.innerHTML = companion.getName();
     companionName.style.display = 'block';
-    console.log(companionName);
     const productTable = document.getElementById('products');
-    
     productTable.style.display = 'table';
     const productTableBody = productTable.querySelector('tbody')
     productTableBody.innerHTML = "";
-    console.log(productTableBody);
     for(let i = 0; i< companion.products.length; i++){
         
         const product = companion.products[i];
@@ -77,7 +73,6 @@ function refreshProductList(companion){ //TODO // TODO 10
         cell.innerHTML = product; 
         row.appendChild(cell); 
         productTableBody.appendChild(row);
-        console.log(companion.products[i]);
     }
     // TODO 10
 }

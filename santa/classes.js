@@ -12,7 +12,7 @@ class Factory{ // TODO 1, 2, 3, 4, 9, 10
     }
     showProductList(ID){
         for(let i = 0; i < this.manok.length; i++){
-                if(this.manok[i].id === ID){
+                if(this.manok[i].id == ID){
                     refreshProductList(this.manok[i]);
                 }
             
