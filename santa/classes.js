@@ -10,6 +10,15 @@ class Factory{ // TODO 1, 2, 3, 4, 9, 10
     createId(){
         return this.manok.length;
     }
+    showProductList(ID){
+        for(let i = 0; i < this.manok.length; i++){
+                if(this.manok[i].id === ID){
+                    refreshProductList(this.manok[i]);
+                }
+            
+        }
+        
+    }
  
 }
 
@@ -28,6 +37,7 @@ class Companion{// TODO 5
     getName(){
         return this.vezeteknev + " " + this.keresztnev
     }
+    
  
 }
 let mano = new Companion(1, "Kristály", "Szép", "Sátor");

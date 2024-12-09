@@ -56,15 +56,29 @@ function appendToSelector(){
  * 
  * @param {Companion} companion 
  */
-function refreshProductList(companion){ //TODO
+function refreshProductList(companion){ //TODO // TODO 10
 
     const companionName = document.getElementById('companion_name');
-    // TODO 10
+    
+    companionName.innerHTML = companion.getName();
     companionName.style.display = 'block';
+    console.log(companionName);
     const productTable = document.getElementById('products');
+    
     productTable.style.display = 'table';
     const productTableBody = productTable.querySelector('tbody')
-    productTableBody.innerHTML = '';
+    productTableBody.innerHTML = "";
+    console.log(productTableBody);
+    for(let i = 0; i< companion.products.length; i++){
+        
+        const product = companion.products[i];
+        const row = document.createElement('tr'); 
+        const cell = document.createElement('td'); 
+        cell.innerHTML = product; 
+        row.appendChild(cell); 
+        productTableBody.appendChild(row);
+        console.log(companion.products[i]);
+    }
     // TODO 10
 }
 
