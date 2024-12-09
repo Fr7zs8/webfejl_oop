@@ -6,6 +6,7 @@ class Factory{ // TODO 1, 2, 3, 4, 9, 10
     addMano(egymano) {
         this.manok.push(egymano);
         createRow(egymano);
+        appendToSelector(egymano);
     }
     createId(){
         return this.manok.length;

@@ -50,10 +50,6 @@ function initTable(){// TODO 6
         for(let product of mano.products){ // A mano objektum product tömbjén megy végig
             actualmano.addproduct(product); // hozzáadja az elemet
         }
-        /*
-        console.log(actualmano);
-        console.log(actualmano.manoNameJelen());
-        */
         factory.addMano(actualmano);
     }
     
