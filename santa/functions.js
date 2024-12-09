@@ -108,5 +108,5 @@ function addProductForm(form, factory){ // TODO
     const productName = form.querySelector('#productname')
     const companionId = selector.value;
     const product = productName.value;
-    // 12
+    factory.addmanoproduct(product, companionId);
 }

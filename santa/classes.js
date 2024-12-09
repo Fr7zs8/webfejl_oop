@@ -16,9 +16,16 @@ class Factory{ // TODO 1, 2, 3, 4, 9, 10
                 if(this.manok[i].id == ID){
                     refreshProductList(this.manok[i]);
                 }
-            
         }
-        
+    }
+    addmanoproduct(product, id){
+        for(let i = 0; i < this.manok.length; i++){
+            if (this.manok[i].getName() == id){
+                this.manok[i].addproduct(product);
+                this.showProductList(this.manok[i].id);
+                console.log(this.manok[i].products)
+            }
+        }
     }
  
 }
