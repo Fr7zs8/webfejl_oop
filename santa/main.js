@@ -39,6 +39,11 @@ document.getElementById('product').addEventListener('submit',function(e){
     const form = e.currentTarget;
     addProductForm(form, factory)
 });
+document.getElementById('area').addEventListener('submit', function(e){
+    e.preventDefault();
+    const form = e.currentTarget;
+    addArea(form, factory);
+});
 
 /**
  * table render

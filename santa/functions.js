@@ -70,7 +70,7 @@ function refreshProductList(companion){ //TODO // TODO 10
         const product = companion.products[i];
         const row = document.createElement('tr'); 
         const cell = document.createElement('td'); 
-        cell.innerHTML = product; 
+        cell.innerHTML = product;
         row.appendChild(cell); 
         productTableBody.appendChild(row);
     }
@@ -109,4 +109,19 @@ function addProductForm(form, factory){ // TODO
     const companionId = selector.value;
     const product = productName.value;
     factory.addmanoproduct(product, companionId);
+}
+
+function addArea(form, factory){
+    const areaname = form.querySelector('#reszlegnema')
+    const area = areaname.value;
+    factory.addnewarea(area);
+}
+
+function appendToAreaSelector(area){ // TODO 11.
+    const areaForm = document.getElementById('area')
+    const selector = areaForm.querySelector('#reszleglista');
+
+    const option = document.createElement('option');
+    option.text = area;
+    selector.appendChild(option);
 }

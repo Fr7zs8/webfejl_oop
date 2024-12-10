@@ -1,12 +1,14 @@
 class Factory{ // TODO 1, 2, 3, 4, 9, 10
     constructor(){
         this.manok = new Array(); // egyenlő []
+        this.arreas = new Array();
 
     }
     addMano(egymano) {
         this.manok.push(egymano);
         createRow(egymano);
         appendToSelector(egymano);
+        appendToAreaSelector(egymano.area)
     }
     createId(){
         return this.manok.length;
@@ -26,6 +28,10 @@ class Factory{ // TODO 1, 2, 3, 4, 9, 10
                 console.log(this.manok[i].products)
             }
         }
+    }
+    addnewarea(area){
+        this.arreas.push(area);
+        appendToAreaSelector(area);
     }
  
 }
