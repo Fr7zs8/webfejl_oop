@@ -52,28 +52,14 @@ class ArrayList{
 
 
 const list = new ArrayList();
+const elso = {nev: "Első teszt"}
+list.Add(elso);
+console.log(list.Contains(elso));
 
-list.Add("Első teszt");
-console.log("Elemszám:" + list.Count +", Állapot:", list);
-console.log(list[0]);
+const masodik = {nev: "Második teszt"}
+list.Add(masodik);
+console.log(list.Contains(masodik));
 
-list.Add("Második teszt");
-console.log("Elemszám:" + list.Count +", Állapot:", list);
-
-console.log(list[1]);
-console.log(list.Contains("Első elem."));
-console.log(list.Contains("Első teszt"));
 
 list.Clear();
-console.log("Elemszám:" + list.Count +", Állapot:", list);
 
-
-const tmp = {};
-Object.defineProperty(tmp, 'nev', {
-    value : "Ferenc",
-    writable: true,
-    enumerable: true
-
-});
-
-console.log(tmp.nev);
