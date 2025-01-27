@@ -101,3 +101,10 @@ console.log(list.Contains(masodik));
 
 list.Clear();
 
+const button = document.createElement("button");
+button.innerHTML = "Hozzáadás"
+button.addEventListener("click", () => {
+    const newPerson = {nev: "Kriszta", eletkor:52}
+    list.Add(newPerson);
+})
+document.body.appendChild(button);
