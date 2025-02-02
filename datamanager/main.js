@@ -52,7 +52,7 @@ class DataManager{
     filterName(name){
         const personsname = []; 
         for(let i = 0; i < this.#array.length; i++){
-            if(this.#array[i].nev.includes(name)){
+            if(this.#array[i].nev.toLowerCase().includes(name.toLowerCase())){
                 personsname.push(this.#array[i]);
             }
         }
@@ -85,14 +85,28 @@ class DataTable{
     constructor(datamanager){
         const table = document.createElement("table");
         document.body.appendChild(table);
-        const tbody = document.createElement("tbody");
-        table.appendChild(tbody);
+        this.#tbody = document.createElement("tbody");
+        table.appendChild(this.#tbody);
 
         datamanager.setUpdateCallback((persons) => {
-            tbody.innerHTML = "";
+            this.#renderTable(persons);
+        })
+    }
+    /**
+     * @type {HTMLTableSectionElement}
+     */
+    #tbody;
+
+
+    /**
+     * 
+     * @param {Person[]} persons 
+     */
+    #renderTable(persons){
+        this.#tbody.innerHTML = "";
             for(let person of persons){
                 const tr = document.createElement("tr");
-                tbody.appendChild(tr);
+                this.#tbody.appendChild(tr);
 
                 const tdname = document.createElement("td");
                 tdname.innerHTML = person.nev;
@@ -102,7 +116,6 @@ class DataTable{
                 tdage.innerHTML = person.eletkor;
                 tr.appendChild(tdage);
             }
-        })
     }
 }
 
@@ -125,3 +138,28 @@ const people =  [
 const datamanager = new DataManager(people);
 const datatable = new DataTable(datamanager);
 
+const label = document.createElement("label");
+label.innerHTML = "Név alapján szűrés:";
+document.body.appendChild(label);
+
+const inputnev = document.createElement("input");
+document.body.appendChild(inputnev);
+
+const br = document.createElement("br");
+document.body.appendChild(br);
+
+const labelage = document.createElement("label");
+labelage.innerHTML = "Kor alapján szűrés:";
+document.body.appendChild(labelage);
+
+const inputage = document.createElement("input");
+document.body.appendChild(inputage);
+
+inputnev.addEventListener("input", (event) => {
+    datamanager.filterName(event.target.value);
+})
+
+inputage.addEventListener("input", (event) => {
+    datamanager.filterAge(Number(event.target.value));
+    console.log(event.target.value);
+})
