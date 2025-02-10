@@ -4,6 +4,11 @@
  * @callback UpdateCallBack
  * @param {Person[]} Persons
  * @returns {void}
+ * 
+ * Vagy igy csinálod vagy egy sorba igy: param {funcion(Person):boolean}
+ * @callback FilterCallBack
+ * @param {Person} person
+ * @returns {boolean}
  */
 
 //Closure
@@ -75,6 +80,49 @@ class DataManager{
         this.#updateCallback(personage);
 
     }
+
+    /**
+     * 
+     * @param {FilterCallBack} {
+        
+     }}  
+     */
+    filter(filterCb){
+        const filteredPersons = [];
+        for(let i = 0; i<this.#array.length; i++){
+            if(filterCb(this.#array[i])){
+                filteredPersons.push(this.#array[i]);
+            }
+        }
+        this.#updateCallback(filteredPersons);
+    }
+
+    /**
+     * 
+     * @param {Person[]} compareFunction 
+     * @returns {Person[]}
+     */
+    order(compareFunction){
+        const tempArray = this.#array.slice();
+        tempArray.sort(compareFunction);
+        return tempArray;
+    }
+
+    /**
+     * 
+     * @param {Person[]} persons 
+     */
+    orderByAge(){
+        return this.order((a,b) => b.eletkor - a.eletkor);
+    }
+
+    /**
+ * 
+ * @param {Person[]} persons
+ */
+    orderByName() {
+        return this.order((a,b) => b.nev.localeCompare(a.nev));
+    }
 }
 
 class DataTable{
@@ -85,6 +133,32 @@ class DataTable{
     constructor(datamanager){
         const table = document.createElement("table");
         document.body.appendChild(table);
+
+        const thead = document.createElement("thead");
+        const tr = document.createElement("tr");
+
+        const nameHeader = document.createElement("th");
+        nameHeader.innerHTML = "Név";
+        nameHeader.addEventListener("click", () => {
+            
+            const sorted = datamanager.orderByName();
+            this.#renderTable(sorted);
+            
+
+        })
+        tr.appendChild(nameHeader);
+
+        const ageHeader = document.createElement("th");
+        ageHeader.innerHTML = "Életkor";
+        ageHeader.addEventListener("click", () => {
+            const sorted = datamanager.orderByAge();
+            this.#renderTable(sorted);
+        })
+        tr.appendChild(ageHeader);
+
+        thead.appendChild(tr);
+        table.appendChild(thead);
+        
         this.#tbody = document.createElement("tbody");
         table.appendChild(this.#tbody);
 
@@ -163,3 +237,29 @@ inputage.addEventListener("input", (event) => {
     datamanager.filterAge(Number(event.target.value));
     console.log(event.target.value);
 })
+
+datamanager.filter((person) => person.eletkor === 17);
+
+const fileinput = document.createElement("input");
+fileinput.type = "file";
+document.body.appendChild(fileinput);
+
+fileinput.addEventListener("change", (event) => {
+    const file = event.target.files[0];
+    const reader = new FileReader();
+
+    reader.onload = () => {
+        const content = reader.result;
+        const lines = content.split("\n");
+
+        for(const line of lines){
+            const [nev, eletkor] = line.split(';');
+            const person = {
+                nev: nev.trim(),
+                eletkor: Number(eletkor.trim())
+            };
+            datamanager.add(person);
+        }
+    };
+    reader.readAsText(file);
+});
