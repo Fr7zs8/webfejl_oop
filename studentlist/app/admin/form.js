@@ -3,13 +3,19 @@ class FormController{
      * @type {Array}
      */
     #formFieldArray;
+
+    /**
+     * @type {Manager}
+     */
+    #manager
     
     /**
      * 
      * @param {{id: string, label: string, type: string, optional?: boolean}[]} fieldConfigurations 
      */
-    constructor(fieldConfigurations){
+    constructor(fieldConfigurations, manager){
         this.#formFieldArray = [];
+        this.#manager = manager;
 
         const form = document.createElement("form");
         for(const field of fieldConfigurations){
@@ -19,7 +25,9 @@ class FormController{
         }
         const button = document.createElement("button");
         form.appendChild(button);
+        button.textContent = "Küldés"
         document.body.appendChild(form);
+        button.addEventListener("submit", (e) => this.#submitEvenetListener(e));
 
     }
 
@@ -52,14 +60,13 @@ class FormController{
         return result;
     }
 
-    #submitEvenetListener(){
+    #submitEvenetListener(e){
         e.PreventDefault();
         if(this.#validateAllFields){
             const value = this.getValueObject();
             const answer = [];
             const student = new Student(value.studentname, value.studentaverage, value.studentcomment, value.studentbad);
-            const manager = new Manager();
-            manager.add(student);
+            this.#manager.add(student);
             e.target.reset();
         }
     }

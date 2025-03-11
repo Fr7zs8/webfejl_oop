@@ -19,7 +19,7 @@ class Manager{
 
     add(student){
         this.#array.push(student);
-        this.setaddAdminCallBack();   
+        this.#addAdminStudentCallback(student);
     }
 
     select(student){
@@ -33,5 +33,15 @@ class Manager{
     }
     setaddAdminCallBack(callback){
         this.#addAdminStudentCallback(callback);
+    }
+
+    generateExportString(){
+        const result = [];
+        for (const student of this.#array){
+            const badValue = student.bad ? '1':'0';
+            const line = `${student.name};${student.average};${student.comment};${badValue}`;
+            result.push(line)
+        }
+        return result.join('\n');
     }
 }
