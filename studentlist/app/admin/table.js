@@ -13,6 +13,9 @@ class Table{
         const fejlec = ["Diák név", "Diák átlag", "Diák komment", "Rossz-e"];
         const tbody = Gomszab.makeTableWithHeader(fejlec);
         manager.setaddAdminCallBack(student => {
+            console.log("hello")
+            console.log(student);
+            
             const tr = document.createElement("tr");
             tbody.appendChild(tr);
             Gomszab.makeCellToRow(tr, student.name);

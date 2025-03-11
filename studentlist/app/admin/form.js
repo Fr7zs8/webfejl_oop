@@ -18,6 +18,7 @@ class FormController{
         this.#manager = manager;
 
         const form = document.createElement("form");
+        form.addEventListener("submit", (e) => this.#submitEvenetListener(e));
         for(const field of fieldConfigurations){
             const formField = new FormField(field.id, field.label, field.type, field.optional);
             this.#formFieldArray.push(formField);
@@ -27,7 +28,7 @@ class FormController{
         form.appendChild(button);
         button.textContent = "Küldés"
         document.body.appendChild(form);
-        button.addEventListener("submit", (e) => this.#submitEvenetListener(e));
+        
 
     }
 
@@ -61,8 +62,8 @@ class FormController{
     }
 
     #submitEvenetListener(e){
-        e.PreventDefault();
-        if(this.#validateAllFields){
+        e.preventDefault();
+        if(this.#validateAllFields()){
             const value = this.getValueObject();
             const answer = [];
             const student = new Student(value.studentname, value.studentaverage, value.studentcomment, value.studentbad);

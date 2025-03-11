@@ -32,7 +32,7 @@ class Manager{
         }
     }
     setaddAdminCallBack(callback){
-        this.#addAdminStudentCallback(callback);
+        this.#addAdminStudentCallback = callback;
     }
 
     generateExportString(){
